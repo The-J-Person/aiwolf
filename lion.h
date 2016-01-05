@@ -9,7 +9,7 @@ class lion : public animal
     public:
         lion();
         virtual ~lion();
-
+        int act();
     protected:
 
     private:

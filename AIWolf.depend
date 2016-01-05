@@ -36,3 +36,40 @@
 1451140200 source:/home/jenia/Documents/C++/AIWolf/wolf.cpp
 	"wolf.h"
 
+1451991144 source:d:\airwolf\animal.cpp
+	"animal.h"
+
+1451990644 d:\airwolf\animal.h
+
+1451991028 source:d:\airwolf\lion.cpp
+	"lion.h"
+
+1451990995 d:\airwolf\lion.h
+	"animal.h"
+
+1451989893 source:d:\airwolf\main.cpp
+	<iostream>
+
+1451990644 source:d:\airwolf\map.cpp
+	"map.h"
+
+1451990644 d:\airwolf\map.h
+	"animal.h"
+	<iostream>
+	<queue>
+
+1451991061 source:d:\airwolf\rabbit.cpp
+	"rabbit.h"
+
+1451990995 d:\airwolf\rabbit.h
+	"animal.h"
+
+1451991061 source:d:\airwolf\stupidwolf.cpp
+	"StupidWolf.h"
+
+1451990995 d:\airwolf\stupidwolf.h
+	"wolf.h"
+
+1451990644 d:\airwolf\wolf.h
+	"animal.h"
+

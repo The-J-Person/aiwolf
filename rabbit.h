@@ -9,7 +9,7 @@ class rabbit : public animal
     public:
         rabbit();
         virtual ~rabbit();
-
+        int act();
     protected:
 
     private:
