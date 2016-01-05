@@ -7,7 +7,7 @@ wolf::wolf()
 
 int wolf::act()
 {
-
+    return 0;
 }
 wolf::~wolf()
 {

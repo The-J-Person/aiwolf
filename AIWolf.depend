@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1451991292 source:/home/jenia/Documents/C++/AIWolf/animal.cpp
+1451997002 source:/home/jenia/Documents/C++/AIWolf/animal.cpp
 	"animal.h"
 
-1451991993 /home/jenia/Documents/C++/AIWolf/animal.h
+1451996839 /home/jenia/Documents/C++/AIWolf/animal.h
+	"misc.h"
 
 1451991292 source:/home/jenia/Documents/C++/AIWolf/lion.cpp
 	"lion.h"
@@ -16,10 +17,11 @@
 1451990367 source:/home/jenia/Documents/C++/AIWolf/map.cpp
 	"map.h"
 
-1451994273 /home/jenia/Documents/C++/AIWolf/map.h
+1451994494 /home/jenia/Documents/C++/AIWolf/map.h
 	<iostream>
 	<queue>
 	"animal.h"
+	"misc.h"
 
 1451991292 source:/home/jenia/Documents/C++/AIWolf/rabbit.cpp
 	"rabbit.h"
@@ -76,5 +78,5 @@
 1451990644 d:\airwolf\wolf.h
 	"animal.h"
 
-1451993819 /home/jenia/Documents/C++/AIWolf/misc.h
+1451994396 /home/jenia/Documents/C++/AIWolf/misc.h
 

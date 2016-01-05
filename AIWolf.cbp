@@ -10,7 +10,7 @@
 				<Option output="bin/Debug/AIWolf" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
-				<Option compiler="clang" />
+				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -41,6 +41,7 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="map.cpp" />
 		<Unit filename="map.h" />
+		<Unit filename="misc.h" />
 		<Unit filename="rabbit.cpp" />
 		<Unit filename="rabbit.h" />
 		<Unit filename="wolf.cpp" />
