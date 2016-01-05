@@ -1,39 +1,42 @@
 # depslib dependency file v1.0
-1451140005 source:/home/jenia/Documents/C++/AIWolf/animal.cpp
+1451991292 source:/home/jenia/Documents/C++/AIWolf/animal.cpp
 	"animal.h"
 
-1451987075 /home/jenia/Documents/C++/AIWolf/animal.h
+1451991993 /home/jenia/Documents/C++/AIWolf/animal.h
 
-1451140066 source:/home/jenia/Documents/C++/AIWolf/lion.cpp
+1451991292 source:/home/jenia/Documents/C++/AIWolf/lion.cpp
 	"lion.h"
 
-1451140284 /home/jenia/Documents/C++/AIWolf/lion.h
+1451991292 /home/jenia/Documents/C++/AIWolf/lion.h
 	"animal.h"
 
 1451140012 source:/home/jenia/Documents/C++/AIWolf/main.cpp
 	<iostream>
 
-1451139942 source:/home/jenia/Documents/C++/AIWolf/map.cpp
+1451990367 source:/home/jenia/Documents/C++/AIWolf/map.cpp
 	"map.h"
 
-1451139942 /home/jenia/Documents/C++/AIWolf/map.h
-
-1451140105 source:/home/jenia/Documents/C++/AIWolf/rabbit.cpp
-	"rabbit.h"
-
-1451140291 /home/jenia/Documents/C++/AIWolf/rabbit.h
+1451994273 /home/jenia/Documents/C++/AIWolf/map.h
+	<iostream>
+	<queue>
 	"animal.h"
 
-1451140228 source:/home/jenia/Documents/C++/AIWolf/StupidWolf.cpp
+1451991292 source:/home/jenia/Documents/C++/AIWolf/rabbit.cpp
+	"rabbit.h"
+
+1451991292 /home/jenia/Documents/C++/AIWolf/rabbit.h
+	"animal.h"
+
+1451991292 source:/home/jenia/Documents/C++/AIWolf/StupidWolf.cpp
 	"StupidWolf.h"
 
-1451140298 /home/jenia/Documents/C++/AIWolf/StupidWolf.h
+1451991292 /home/jenia/Documents/C++/AIWolf/StupidWolf.h
 	"wolf.h"
 
 1451987219 /home/jenia/Documents/C++/AIWolf/wolf.h
 	"animal.h"
 
-1451140200 source:/home/jenia/Documents/C++/AIWolf/wolf.cpp
+1451991292 source:/home/jenia/Documents/C++/AIWolf/wolf.cpp
 	"wolf.h"
 
 1451991144 source:d:\airwolf\animal.cpp
@@ -72,4 +75,6 @@
 
 1451990644 d:\airwolf\wolf.h
 	"animal.h"
+
+1451993819 /home/jenia/Documents/C++/AIWolf/misc.h
 

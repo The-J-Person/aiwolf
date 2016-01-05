@@ -1,8 +1,9 @@
 #ifndef MAP_H
 #define MAP_H
-#include "animal.h"
 #include <iostream>
 #include <queue>
+#include "animal.h"
+#include "misc.h"
 using namespace std;
 
 class map
@@ -12,7 +13,8 @@ class map
         ~map();
         map(const map& other);
         map& operator=(const map& other);
-
+        void add_animal(animal&);
+        void move_map(direction);
 //        int** Getgrid() { return grid; }
 //        void Setgrid(int** val) { grid = val; }
 
@@ -24,6 +26,7 @@ class map
         int tick_count;
         int height;
         int width;
+        void generate_terrain();
 };
 
 #endif // MAP_H
