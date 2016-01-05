@@ -7,9 +7,8 @@ class animal
     public:
         animal();
         virtual ~animal();
-
+        virtual int act();
     protected:
-
     private:
 };
 

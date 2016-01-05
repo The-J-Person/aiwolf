@@ -2,7 +2,7 @@
 1451140005 source:/home/jenia/Documents/C++/AIWolf/animal.cpp
 	"animal.h"
 
-1451140005 /home/jenia/Documents/C++/AIWolf/animal.h
+1451987075 /home/jenia/Documents/C++/AIWolf/animal.h
 
 1451140066 source:/home/jenia/Documents/C++/AIWolf/lion.cpp
 	"lion.h"
@@ -23,4 +23,16 @@
 
 1451140291 /home/jenia/Documents/C++/AIWolf/rabbit.h
 	"animal.h"
+
+1451140228 source:/home/jenia/Documents/C++/AIWolf/StupidWolf.cpp
+	"StupidWolf.h"
+
+1451140298 /home/jenia/Documents/C++/AIWolf/StupidWolf.h
+	"wolf.h"
+
+1451987219 /home/jenia/Documents/C++/AIWolf/wolf.h
+	"animal.h"
+
+1451140200 source:/home/jenia/Documents/C++/AIWolf/wolf.cpp
+	"wolf.h"
 
