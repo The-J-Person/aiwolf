@@ -3,6 +3,7 @@
 StupidWolf::StupidWolf()
 {
     //ctor
+    dead = false;
 }
 
 int StupidWolf::act()

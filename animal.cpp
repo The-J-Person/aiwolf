@@ -1,4 +1,5 @@
 #include "animal.h"
+#include "map.h"
 
 animal::animal()
 {
@@ -14,17 +15,19 @@ void animal::move_self(direction D)
 {
     switch(D)
     {
-    case up:
+    case UP:
         loc.y++;
         break;
-    case right:
+    case RIGHT:
         loc.x++;
         break;
-    case down:
+    case DOWN:
         loc.y--;
         break;
-    case left:
+    case LEFT:
         loc.x--;
+        break;
+    case NOWHERE:
         break;
     }
 }
@@ -32,6 +35,11 @@ void animal::move_self(direction D)
 coordinate animal::get_location()
 {
     return loc;
+}
+
+void animal::set_location(coordinate c)
+{
+    loc=c;
 }
 
 animal::~animal()

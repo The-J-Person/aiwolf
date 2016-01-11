@@ -1,32 +1,48 @@
 #ifndef MAP_H
 #define MAP_H
 #include <iostream>
-#include <queue>
-#include "animal.h"
+#include <cstdlib>
+#include <list>
+#include <cmath>
 #include "misc.h"
 using namespace std;
+
+class animal;
 
 class map
 {
     public:
-        map(int, int);
+        map(int, int, int, int, int, long);
         ~map();
         map(const map& other);
         map& operator=(const map& other);
-        void add_animal(animal&);
         void move_map(direction);
+        void draw_map();
+        long run(bool); ///Returns number of steps before wolf death. Takes a TRUE is the operator should view every step.
+        coordinate* get_all_lions();
+        coordinate* get_all_rabbits();
+        coordinate get_nearest_wolf(coordinate source);
+        coordinate get_nearest_lion(coordinate source);
+        coordinate get_nearest_rabbit(coordinate source);
+        map_object** get_grid();
 //        int** Getgrid() { return grid; }
 //        void Setgrid(int** val) { grid = val; }
 
     protected:
 
     private:
-        int** grid;
-        queue<animal> animals;
-        int tick_count;
+        map_object** grid; ///Map's grid
+        list<animal*> animals; ///Action queue of actors
+        long tick_count; ///Number of actions the wolf took
+        long max_ticks; ///Point to stop simulation
         int height;
         int width;
-        void generate_terrain();
+        int lion_chance;
+        int rabbit_chance;
+        int tree_chance;
+
+        void generate_terrain(int,int);
+        int measure_distance(animal*,animal*);
 };
 
 #endif // MAP_H

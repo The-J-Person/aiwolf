@@ -13,3 +13,13 @@ wolf::~wolf()
 {
     //dtor
 }
+
+void wolf::set_hunger_threshold(int newthresh)
+{
+    hunger_threshold=newthresh;
+}
+
+void wolf::grow_hungry()
+{
+    hunger++;
+}

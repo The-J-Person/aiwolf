@@ -9,7 +9,7 @@ class StupidWolf : public wolf
     public:
         StupidWolf();
         virtual ~StupidWolf();
-        int act();
+        virtual int act();
     protected:
 
     private:

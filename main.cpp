@@ -1,9 +1,98 @@
 #include <iostream>
+#include "StupidWolf.h"
+#include "map.h"
 
 using namespace std;
+
+map* getmap()
+{
+    int w,h, lchance, rchance, tchance;
+    long maxtick;
+    cout << "First, we decide the wolf's line of sight." << endl << "A width of 80 or less and a height of 24 or less is recommended " << endl;
+    cout << "The width of its world is :" << endl;
+    cin >> w;
+    w+=2;
+    cout << "The height of it's world is:" << endl;
+    cin >> h;
+    h+=2;
+    cout << "The percentage chance that a LION will appear in new squares:" << endl;
+    cin >> lchance;
+    cout << "The percentage chance that a RABBIT will appear in new squares:" << endl;
+    cin >> rchance;
+    cout << "The percentage chance that a TREE will appear in new squares:" << endl;
+    cin >> tchance;
+    cout << "The maximum number of steps a wolf may take before the simulation ends:" << endl;
+    cin >> maxtick;
+    return new map(w,h, lchance, rchance, tchance, maxtick);
+}
+
+wolf* getwolf()
+{
+    int wchoice, hthresh;
+    wolf* newwolf=NULL;
+    cout << "What kind of wolf shall we test?" << endl << "Currently available types are:" << endl;
+    ///
+    /// ADD NEW WOLF AI CHOICES HERE PLEASE
+    ///
+    cout << "1. Stupid Wolf";
+    while(newwolf==NULL)
+    {
+        cin >> wchoice;
+        switch (wchoice)
+        {
+        case 1:
+            newwolf = new StupidWolf();
+            break;
+        default:
+            cout << "Invalid choice..." << endl;
+        }
+    }
+    cout << "How many steps can this wolf take, without food, before dying of hunger?" << endl;
+    cin >> hthresh;
+    newwolf -> set_hunger_threshold(hthresh);
+    return newwolf;
+}
 
 int main()
 {
     cout << "Welcome to the Wolf AI tester!" << endl;
+    char choice='0';
+    map * simarea;
+    wolf * protag;
+    do
+    {
+        switch(choice)
+        {
+        case '0':
+            simarea = getmap();
+            protag = getwolf();
+            break;
+        case '1':
+            simarea->run(true);
+            break;
+        case '2':
+            simarea->run(false);
+            break;
+        case '3':
+            delete protag;
+            protag = getwolf();
+            break;
+        default:
+            cout << "Invalid choice! (Press any key to return to menu)";
+            cin.ignore();
+        }
+        if (system("CLS")) system("clear");
+        cout << "--Menu--" << endl;
+        cout << "1. Run a step-by-step visual simulation with current parameters" << endl;
+        cout << "2. Run a bulk simulation with current parameters" << endl;
+        cout << "3. Change current wolf's AI mode" << endl;
+        cout << "0. Change simulation parameters" << endl;
+        cout << "e. Exit the program" << endl;
+        cin >> choice;
+        cin.ignore();
+    }
+    while(choice!='e');
+    delete simarea;
+    delete protag;
     return 0;
 }
