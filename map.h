@@ -44,6 +44,7 @@ class map
         int rabbit_chance;
         int tree_chance;
 
+        void generate_edges();
         void generate_terrain(int,int);
         int measure_distance(animal*,animal*);
 };

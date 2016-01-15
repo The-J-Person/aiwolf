@@ -14,10 +14,10 @@ map::map(int w, int h, int lchance, int rchance, int tchance, long maxtick)
     width=w;
     max_ticks=maxtick;
     grid = new map_object*[h];
-    for(int i=0;i<h;i++)
+    for(int i=0; i<h; i++)
     {
         grid[i] = new map_object[w];
-        for(int j=0;j<w;j++) if(i!=h/2+1 && j!=w/2+1)generate_terrain(i,j);
+        for(int j=0; j<w; j++) if(i!=h/2+1 && j!=w/2+1)generate_terrain(i,j);
     }
     grid[h/2+1][w/2+1] = WOLF;
     wolf * def = new wolf();
@@ -27,9 +27,13 @@ map::map(int w, int h, int lchance, int rchance, int tchance, long maxtick)
 map::~map()
 {
     //dtor
-    for(int i=0;i<height;i++) delete(grid[i]);
+    for(int i=0; i<height; i++) delete(grid[i]);
     delete(grid);
-    while(!animals.empty()) animals.pop_front();
+    while(!animals.empty())
+    {
+        delete animals.front();
+        animals.pop_front();
+    }
 }
 
 map::map(const map& other)
@@ -43,10 +47,10 @@ map::map(const map& other)
     width=other.width;
     max_ticks=other.max_ticks;
     grid = new map_object*[height];
-    for(int i=0;i<height;i++)
+    for(int i=0; i<height; i++)
     {
         grid[i] = new map_object[width];
-        for(int j=0;j<width;j++) if(i!=height/2+1 && j!=width/2+1)generate_terrain(i,j);
+        for(int j=0; j<width; j++) if(i!=height/2+1 && j!=width/2+1)generate_terrain(i,j);
     }
     grid[height/2+1][width/2+1] = WOLF;
     wolf * def = new wolf();
@@ -111,20 +115,22 @@ void map::move_map(direction dir)
     case ::NOWHERE:
         break;
     }
-    for(int i=0;i<height;i++)
+    for(int i=0; i<height; i++)
     {
-        for(int j=0;j<width;j++)
+        for(int j=0; j<width; j++)
         {
-//            if(i+)
+            if(i+y<height && i+y>=0)
+                if(j+x<width && j+x>=0)
+                    swap(grid[i][j],grid[i+y][j+x]);
         }
     }
 }
 
 void map::draw_map()
 {
-    for(int i=1;i<height-1;i++)
+    for(int i=1; i<height-1; i++)
     {
-        for(int j=1;j<width-1;j++)
+        for(int j=1; j<width-1; j++)
         {
             char token;
             switch(grid[i][j])
@@ -160,7 +166,9 @@ long map::run(bool show)
 {
     while(tick_count<max_ticks)
     {
-
+        ///Move everyone
+        ///Gotta put an iterator here
+        generate_edges();
         tick_count++;
     }
     return tick_count;
@@ -204,4 +212,15 @@ int map::measure_distance(animal* first,animal* second)
     int disty = pow(source.y-target.y,2);
     int result = sqrt(distx+disty);
     return result;
+}
+
+void map::generate_edges()
+{
+    for(int i=0; i<height; i++)
+    {
+        for(int j=0; j<width; j++)
+        {
+            if(i==height-1 || j==width-1 || i==0 || j==0) generate_terrain(i,j);
+        }
+    }
 }
