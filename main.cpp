@@ -6,6 +6,11 @@
 
 using namespace std;
 
+void cls()
+{
+
+}
+
 map* getmap()
 {
     int w,h, lchance, rchance, tchance;
@@ -82,8 +87,10 @@ int main()
         case '1':
             simarea->run(true);
             protag -> eat();
+            //map temp = new map(*simarea);
             break;
         case '2':
+            cout << "How many times should this run?" << endl;
             simarea->run(false);
             protag -> eat();
             break;

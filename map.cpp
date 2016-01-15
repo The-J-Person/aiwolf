@@ -286,7 +286,7 @@ long map::run(bool show)
         }
         ///Gotta put an iterator here
         p -> grow_hungry();
-        generate_edges();
+        //generate_edges();
         tick_count++;
     }
     return tick_count;
