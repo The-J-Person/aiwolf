@@ -18,10 +18,10 @@ map::map(int w, int h, int lchance, int rchance, int tchance, long maxtick)
     {
         grid[i] = new map_object[w];
         for(int j=0; j<w; j++) if(i!=h/2+1 || j!=w/2+1)
-        {
-            grid[i][j] = BLANK;///Shouldn't be necessary
-            generate_terrain(i,j);
-        }
+            {
+                grid[i][j] = BLANK;///Shouldn't be necessary
+                generate_terrain(i,j);
+            }
     }
     grid[h/2+1][w/2+1] = WOLF;
     animals.push_front(new wolf());
@@ -30,8 +30,8 @@ map::map(int w, int h, int lchance, int rchance, int tchance, long maxtick)
 map::~map()
 {
     //dtor
-    for(int i=0; i<height; i++) delete(grid[i]);
-    delete(grid);
+    for(int i=0; i<height; i++) delete grid[i];
+    delete[] grid;
     while(!animals.size()>1)
     {
         delete animals.back();
@@ -169,13 +169,19 @@ void map::placewolf(wolf* protag)
 long map::run(bool show)
 {
     wolf * p = (wolf*)(animals.front());
+    bool deleted=false;
     while(tick_count<max_ticks && !(p->starve()))
     {
         ///Move everyone
         list<animal*>::iterator it;
         coordinate c;
-        for (it=animals.begin(); it!=animals.end(); ++it)
+        for (it=animals.begin(); it!=animals.end() ; ++it)
         {
+            if(deleted)
+            {
+                --it;
+                deleted = false;
+            }
             direction d = (*it) -> act();
             c = (*it) -> get_location();
             int x = c.x;
@@ -199,6 +205,14 @@ long map::run(bool show)
             case NOWHERE:
                 break;
             }
+            if(x==0 || y == 0 || x==height-1 || y==width-1)
+            {
+                ///If the animal left the map...
+                animal * ptr = (*it);
+                --it;//This is safe, because the wolf never leaves the map, and is always first in the list
+                animals.remove(ptr);
+                delete ptr;
+            }
             if(modx!=0 || mody!=0)switch(grid[x][y])
                 {
                 case WOLF:
@@ -208,12 +222,17 @@ long map::run(bool show)
                         cout << "The developer did not account for 2 wolves on the same map!" << endl;
                         break;
                     case RABBIT:
+                    {
                         c.x=x+modx;
                         c.y=y+mody;
+                        animal * ptr = find_animal_by_location(c);
+                        animals.remove(ptr);
+                        delete ptr;
                         (*it) -> set_location(c);
                         move_map(d);
                         p -> eat();
-                        break;
+                    }
+                    break;
                     case LION:
                         ///The Wolf gets himself killed
                         return tick_count;
@@ -261,9 +280,13 @@ long map::run(bool show)
                     {
                     case WOLF:
                         ///The rabbit sacrificed himself. Should not happen.
+                    {
                         p -> eat();
-                        return tick_count;
-                        break;
+                        animal* ptr=(*it);
+                        --it;
+                        delete ptr;
+                    }
+                    break;
                     case RABBIT:
                         ///Don't move, the other rabbit is in the way
                         break;
@@ -288,9 +311,9 @@ long map::run(bool show)
                 cin.ignore();
             }
         }
-        ///Gotta put an iterator here
+        ///
         p -> grow_hungry();
-        //generate_edges();
+        generate_edges();
         tick_count++;
     }
     return tick_count;
@@ -345,4 +368,14 @@ void map::generate_edges()
             if(i==height-1 || j==width-1 || i==0 || j==0) generate_terrain(i,j);
         }
     }
+}
+
+animal* map::find_animal_by_location(coordinate c)
+{
+    list<animal*>::iterator it;
+    for (it=animals.begin(); it!=animals.end() ; ++it)
+    {
+        if((*it)->get_location().x==c.x && (*it)->get_location().y==c.y ) return (*it);
+    }
+    return NULL;
 }

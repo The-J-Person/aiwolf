@@ -14,7 +14,6 @@ class animal
         void set_location(coordinate);
         coordinate get_location();
     protected:
-        bool dead;
         map* parent_map;
     private:
         coordinate loc;

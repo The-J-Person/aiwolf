@@ -4,6 +4,7 @@ wolf::wolf()
 {
     //ctor
     hunger=0;
+    hunger_threshold=0;
 }
 
 direction wolf::act()

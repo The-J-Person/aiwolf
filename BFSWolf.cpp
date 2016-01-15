@@ -6,7 +6,6 @@
 BFSwolf::BFSwolf()
 {
     //ctor
-	dead = false;
 }
 
 BFSwolf::~BFSwolf()

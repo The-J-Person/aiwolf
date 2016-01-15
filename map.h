@@ -48,6 +48,7 @@ class map
         void generate_edges();
         void generate_terrain(int,int);
         int measure_distance(animal*,animal*);
+        animal * find_animal_by_location(coordinate);
 };
 
 #endif // MAP_H

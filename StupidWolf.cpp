@@ -2,8 +2,7 @@
 
 StupidWolf::StupidWolf()
 {
-    //ctor
-    dead = false;
+    //ctor=
 }
 
 direction StupidWolf::act()

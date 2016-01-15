@@ -7,7 +7,6 @@
 HunterWolf::HunterWolf()
 {
 	//ctor
-	dead = false;
 }
 
 direction HunterWolf::act()
