@@ -23,3 +23,14 @@ void wolf::grow_hungry()
 {
     hunger++;
 }
+
+void wolf::eat()
+{
+    hunger=0;
+}
+
+bool wolf::starve()
+{
+    if(hunger<hunger_threshold) return false;
+    return true;
+}

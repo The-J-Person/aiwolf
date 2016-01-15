@@ -12,6 +12,8 @@ class wolf : public animal
         virtual direction act();
         void set_hunger_threshold(int);
         void grow_hungry();
+        void eat();
+        bool starve();
     protected:
     private:
         int hunger;

@@ -17,7 +17,6 @@ class map
         ~map();
         map(const map& other);
         map& operator=(const map& other);
-        void move_map(direction);
         void draw_map();
         void placewolf(wolf* protag);
         long run(bool); ///Returns number of steps before wolf death. Takes a TRUE is the operator should view every step.
@@ -44,6 +43,7 @@ class map
         int rabbit_chance;
         int tree_chance;
 
+        void move_map(direction);
         void generate_edges();
         void generate_terrain(int,int);
         int measure_distance(animal*,animal*);

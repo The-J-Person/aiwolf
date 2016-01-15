@@ -70,9 +70,11 @@ int main()
             break;
         case '1':
             simarea->run(true);
+            protag -> eat();
             break;
         case '2':
             simarea->run(false);
+            protag -> eat();
             break;
         case '3':
             delete protag;
@@ -95,6 +97,6 @@ int main()
     }
     while(choice!='e');
     delete simarea;
-//    delete protag; THE MAP DELETES ALL CONTAINED ANIMALS
+    delete protag;
     return 0;
 }

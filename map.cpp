@@ -20,8 +20,7 @@ map::map(int w, int h, int lchance, int rchance, int tchance, long maxtick)
         for(int j=0; j<w; j++) if(i!=h/2+1 && j!=w/2+1)generate_terrain(i,j);
     }
     grid[h/2+1][w/2+1] = WOLF;
-    wolf * def = new wolf();
-    animals.push_front(def);
+    animals.push_front(new wolf());
 }
 
 map::~map()
@@ -158,18 +157,130 @@ void map::draw_map()
 
 void map::placewolf(wolf* protag)
 {
+    delete animals.front();
     animals.pop_front();
     animals.push_front(protag);
 }
 
 long map::run(bool show)
 {
-    while(tick_count<max_ticks)
+    wolf * p = (wolf*)(animals.front());
+    while(tick_count<max_ticks && !(p->starve()))
     {
         ///Move everyone
         list<animal*>::iterator it;
-        it = animals.begin();
+        coordinate c;
+        for (it=animals.begin(); it!=animals.end(); ++it)
+        {
+            direction d = (*it) -> act();
+            c = (*it) -> get_location();
+            int x = c.x;
+            int y = c.y;
+            int modx=0;
+            int mody=0;
+            switch(d)
+            {
+            case UP:
+                modx=-1;
+                break;
+            case DOWN:
+                modx=1;
+                break;
+            case RIGHT:
+                mody=1;
+                break;
+            case LEFT:
+                mody=-1;
+                break;
+            case NOWHERE:
+                continue;
+            }
+            if(modx!=0 || mody!=0)switch(grid[x][y])
+            {
+            case WOLF:
+                switch(grid[x+modx][y+mody])
+                {
+                case WOLF:
+                    cout << "The developer did not account for 2 wolves on the same map!" << endl;
+                    break;
+                case RABBIT:
+                    c.x=x+modx;
+                    c.y=y+mody;
+                    (*it) -> set_location(c);
+                    move_map(d);
+                    p -> eat();
+                    break;
+                case LION:
+                    ///The Wolf gets himself killed
+                    return tick_count;
+                case TREE:
+                    break;
+                case BLANK:
+                    c.x=x+modx;
+                    c.y=y+mody;
+                    (*it) -> set_location(c);
+                    move_map(d);
+                    break;
+                }
+                if(show)
+                {
+                    draw_map();
+                    cin.ignore();
+                }
+                break;
+
+                case LION:
+                switch(grid[x+modx][y+mody])
+                {
+                case WOLF:
+                    ///The wolf has been eaten
+                    return tick_count;
+                    break;
+                case RABBIT:
+                    ///Don't move, you might step on the rabbit!
+                    break;
+                case LION:
+                    ///Don't move, you'll make the other lion angry
+                    break;
+                case TREE:
+                    ///The lion hits a tree! Ow!
+                    break;
+                case BLANK:
+                    c.x=x+modx;
+                    c.y=y+mody;
+                    (*it) -> set_location(c);
+                    break;
+                }
+
+                case RABBIT:
+                switch(grid[x+modx][y+mody])
+                {
+                case WOLF:
+                    ///The rabbit sacrificed himself. Should not happen.
+                    p -> eat();
+                    return tick_count;
+                    break;
+                case RABBIT:
+                    ///Don't move, the other rabbit is in the way
+                    break;
+                case LION:
+                    ///Don't move, you'll make the lion angry!
+                    break;
+                case TREE:
+                    ///The rabbit hits a tree! Ow!
+                    break;
+                case BLANK:
+                    c.x=x+modx;
+                    c.y=y+mody;
+                    (*it) -> set_location(c);
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
         ///Gotta put an iterator here
+        p -> grow_hungry();
         generate_edges();
         tick_count++;
     }
