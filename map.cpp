@@ -17,8 +17,11 @@ map::map(int w, int h, int lchance, int rchance, int tchance, long maxtick)
     for(int i=0;i<h;i++)
     {
         grid[i] = new map_object[w];
-        for(int j=0;j<w;j++) generate_terrain(i,j);
+        for(int j=0;j<w;j++) if(i!=h/2+1 && j!=w/2+1)generate_terrain(i,j);
     }
+    grid[h/2+1][w/2+1] = WOLF;
+    wolf * def = new wolf();
+    animals.push_front(def);
 }
 
 map::~map()
@@ -26,7 +29,7 @@ map::~map()
     //dtor
     for(int i=0;i<height;i++) delete(grid[i]);
     delete(grid);
-
+    while(!animals.empty()) animals.pop_front();
 }
 
 map::map(const map& other)
@@ -51,7 +54,7 @@ void map::generate_terrain(int x,int y)
         lion * L = new lion;
         coordinate c = {x,y};
         L -> set_location(c);
-        //animals.add(L);
+        animals.push_back(L);
     }
     else if(roll<lion_chance+rabbit_chance)
     {
@@ -59,7 +62,7 @@ void map::generate_terrain(int x,int y)
         rabbit * R = new rabbit;
         coordinate c = {x,y};
         R -> set_location(c);
-        //animals.add(R);
+        animals.push_back(R);
     }
     else if(roll<lion_chance+rabbit_chance+tree_chance)
     {
@@ -129,6 +132,12 @@ void map::draw_map()
         }
         cout << endl;
     }
+}
+
+void map::placewolf(wolf* protag)
+{
+    animals.pop_front();
+    animals.push_front(protag);
 }
 
 long map::run(bool show)

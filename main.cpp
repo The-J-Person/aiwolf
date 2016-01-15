@@ -66,6 +66,7 @@ int main()
         case '0':
             simarea = getmap();
             protag = getwolf();
+            simarea -> placewolf(protag);
             break;
         case '1':
             simarea->run(true);
@@ -76,6 +77,7 @@ int main()
         case '3':
             delete protag;
             protag = getwolf();
+            simarea -> placewolf(protag);
             break;
         default:
             cout << "Invalid choice! (Press any key to return to menu)";
@@ -93,6 +95,6 @@ int main()
     }
     while(choice!='e');
     delete simarea;
-    delete protag;
+//    delete protag; THE MAP DELETES ALL CONTAINED ANIMALS
     return 0;
 }

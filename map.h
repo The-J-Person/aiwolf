@@ -8,6 +8,7 @@
 using namespace std;
 
 class animal;
+class wolf;
 
 class map
 {
@@ -18,7 +19,9 @@ class map
         map& operator=(const map& other);
         void move_map(direction);
         void draw_map();
+        void placewolf(wolf* protag);
         long run(bool); ///Returns number of steps before wolf death. Takes a TRUE is the operator should view every step.
+
         coordinate* get_all_lions();
         coordinate* get_all_rabbits();
         coordinate get_nearest_wolf(coordinate source);
