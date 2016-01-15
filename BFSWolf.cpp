@@ -37,8 +37,29 @@ direction BFSwolf::act()
         std::list<coordinate> cors = get_cords(visited,cor);
 		for (list<coordinate>::const_iterator ci = cors.begin(); ci != cors.end(); ++ci)
         {
-            if(mp[ci->x][ci->y] == RABBIT)
-                return UP;
+			if (mp[ci->x][ci->y] == RABBIT)
+			{
+				if (ci->x == start.x && ci->y == start.y)
+				{
+					return NOWHERE;
+				}
+				else if (ci->x < start.x)
+				{
+					return LEFT;
+				}
+				else if (ci->x < start.x)
+				{
+					return RIGHT;
+				}
+				else if (ci->x == start.x && start.y> ci->y)
+				{
+					return UP;
+				}
+				else
+				{
+					return DOWN;
+				}
+			}
 			visited[ci->x][ci->y] = true;
         }
     }
@@ -48,13 +69,13 @@ std::list<coordinate> BFSwolf::get_cords(bool** visited, coordinate cor)
 {
 
 	std::list<coordinate> cors;
-	if (cor.x > 0 && visited[cor.x - 1][cor.y] == true)
+	if (cor.x > 0 && visited[cor.x - 1][cor.y] == false)
 		cors.push_back(coordinate{ cor.x - 1, cor.y });
-	if (cor.x< get_location().x*2-1 && visited[cor.x + 1][cor.y] == true)
+	if (cor.x< get_location().x * 2 - 1 && visited[cor.x + 1][cor.y] == false)
 		cors.push_back(coordinate{ cor.x + 1, cor.y });
-	if (cor.y>0 && visited[cor.x][cor.y - 1] == true)
+	if (cor.y>0 && visited[cor.x][cor.y - 1] == false)
 		cors.push_back(coordinate{ cor.x, cor.y - 1 });
-	if (cor.y < get_location().x * 2 - 1 && visited[cor.x][cor.y + 1] == true)
+	if (cor.y < get_location().y * 2 - 1 && visited[cor.x][cor.y + 1] == false)
 		cors.push_back(coordinate{ cor.x, cor.y + 1 });
     return cors;
 }
