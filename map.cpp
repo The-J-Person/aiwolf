@@ -17,7 +17,7 @@ map::map(int w, int h, int lchance, int rchance, int tchance, long maxtick)
     for(int i=0; i<h; i++)
     {
         grid[i] = new map_object[w];
-        for(int j=0; j<w; j++) if(i!=h/2+1 && j!=w/2+1)generate_terrain(i,j);
+        for(int j=0; j<w; j++) if(i!=h/2+1 || j!=w/2+1)generate_terrain(i,j);
     }
     grid[h/2+1][w/2+1] = WOLF;
     animals.push_front(new wolf());
