@@ -210,7 +210,7 @@ long map::run(bool show)
             case NOWHERE:
                 break;
             }
-            if(x==0 || y == 0 || x==height-1 || y==width-1)
+            if((x==0 && modx==-1) || (y==0 && mody==-1) || (x==height-1 && modx==1) || (y==width-1 && mody==1))
             {
                 ///If the animal left the map...
                 animal * ptr = (*it);
@@ -218,7 +218,7 @@ long map::run(bool show)
                 animals.remove(ptr);
                 delete ptr;
             }
-            if(modx!=0 || mody!=0)switch(grid[x][y])
+            else if(modx!=0 || mody!=0)switch(grid[x][y])
                 {
                 case WOLF:
                     switch(grid[x+modx][y+mody])
