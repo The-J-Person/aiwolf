@@ -4,11 +4,11 @@
 #include "wolf.h"
 #include <list>
 
-class BFSwolf : public wolf
+class BFSWolf : public wolf
 {
     public:
-        BFSwolf();
-        virtual ~BFSwolf();
+        BFSWolf();
+        virtual ~BFSWolf();
         direction act();
 		std::list<coordinate> get_cords(bool** visited, coordinate cor);
     protected:

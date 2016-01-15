@@ -2,17 +2,17 @@
 #include "map.h"
 #include <queue>
 
-BFSwolf::BFSwolf()
+BFSWolf::BFSWolf()
 {
     //ctor
 }
 
-BFSwolf::~BFSwolf()
+BFSWolf::~BFSWolf()
 {
     //dtor
 }
 
-direction BFSwolf::act()
+direction BFSWolf::act()
 {
     map_object** mp = parent_map->get_grid();
     coordinate start = get_location();
@@ -64,7 +64,7 @@ direction BFSwolf::act()
     return NOWHERE;
 }
 
-std::list<coordinate> BFSwolf::get_cords(bool** visited, coordinate cor)
+std::list<coordinate> BFSWolf::get_cords(bool** visited, coordinate cor)
 {
 
     std::list<coordinate> cors;

@@ -234,6 +234,8 @@ long map::run(bool show)
                         animals.remove(ptr);
                         delete ptr;
                         (*it) -> set_location(c);
+                        swap(grid[x][y],grid[x+modx][y+mody]);
+                        grid[x][y]=BLANK;
                         move_map(d);
                         p -> eat();
                     }
@@ -247,6 +249,7 @@ long map::run(bool show)
                         c.x=x+modx;
                         c.y=y+mody;
                         (*it) -> set_location(c);
+                        swap(grid[x][y],grid[x+modx][y+mody]);
                         move_map(d);
                         break;
                     }
@@ -277,6 +280,7 @@ long map::run(bool show)
                         c.x=x+modx;
                         c.y=y+mody;
                         (*it) -> set_location(c);
+                        swap(grid[x][y],grid[x+modx][y+mody]);
                         break;
                     }
 
@@ -291,6 +295,7 @@ long map::run(bool show)
                         --it;
                         delete ptr;
                     }
+                    grid[x][y]=BLANK;
                     break;
                     case RABBIT:
                         ///Don't move, the other rabbit is in the way
@@ -305,6 +310,7 @@ long map::run(bool show)
                         c.x=x+modx;
                         c.y=y+mody;
                         (*it) -> set_location(c);
+                        swap(grid[x][y],grid[x+modx][y+mody]);
                         break;
                     }
                 default:

@@ -1,4 +1,4 @@
-#include "Hunterwolf.h"
+#include "HunterWolf.h"
 #include "map.h"
 #include <list>
 #include <math.h>

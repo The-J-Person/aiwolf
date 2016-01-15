@@ -1,14 +1,16 @@
 #include <iostream>
 #include "StupidWolf.h"
-#include "Hunterwolf.h"
+#include "HunterWolf.h"
 #include "BFSWolf.h"
 #include "map.h"
+
+#define TERMINAL_HEIGHT 24
 
 using namespace std;
 
 void cls()
 {
-
+    for(int i=0;i<24;i++) cout << '\n';
 }
 
 map* getmap()
@@ -57,7 +59,7 @@ wolf* getwolf()
             newwolf = new HunterWolf();
             break;
         case 3:
-            newwolf = new BFSwolf();
+            newwolf = new BFSWolf();
             break;
         default:
             cout << "Invalid choice..." << endl;
@@ -82,7 +84,7 @@ int main()
     /// TEST ZONE
     ///
 //    simarea = new map(40,24, 2, 5, 10, 500);
-//    protag = new StupidWolf();
+//    protag = new HunterWolf();
 //    protag -> set_hunger_threshold(100);
 //    simarea -> placewolf(protag);
 //    long counter=0;
@@ -152,7 +154,7 @@ int main()
             cout << "Invalid choice! (Press any key to return to menu)";
             cin.ignore();
         }
-        if (system("CLS")) system("clear");
+        cls();
         cout << "--Menu--" << endl;
         cout << "1. Run a step-by-step visual simulation with current parameters" << endl;
         cout << "2. Run a bulk simulation with current parameters" << endl;
