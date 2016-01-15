@@ -85,15 +85,37 @@ int main()
             simarea -> placewolf(protag);
             break;
         case '1':
+        {
             simarea->run(true);
             protag -> eat();
-            //map temp = new map(*simarea);
-            break;
+            map * temp = new map(*simarea);
+            delete simarea;
+            simarea = temp;
+            simarea -> placewolf(protag);
+        }
+        break;
         case '2':
+        {
+
             cout << "How many times should this run?" << endl;
-            simarea->run(false);
+            int times;
+            double avg;
+            cin >> times;
+            for(int i=0; i<times; i++)
+            {
+                avg+=simarea->run(false);
+                cout << "Completed run " << i+1 << endl;
+                protag -> eat();
+                map * temp = new map(*simarea);
+                delete simarea;
+                simarea = temp;
+                simarea -> placewolf(protag);
+            }
+            avg = avg/(double)times;
+            cout << "Operation complete - Average Wolf lifespan is " << avg << " steps over " << times << "tests." << endl;
             protag -> eat();
-            break;
+        }
+        break;
         case '3':
             delete protag;
             protag = getwolf();

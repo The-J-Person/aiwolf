@@ -17,7 +17,11 @@ map::map(int w, int h, int lchance, int rchance, int tchance, long maxtick)
     for(int i=0; i<h; i++)
     {
         grid[i] = new map_object[w];
-        for(int j=0; j<w; j++) if(i!=h/2+1 || j!=w/2+1)generate_terrain(i,j);
+        for(int j=0; j<w; j++) if(i!=h/2+1 || j!=w/2+1)
+        {
+            grid[i][j] = BLANK;///Shouldn't be necessary
+            generate_terrain(i,j);
+        }
     }
     grid[h/2+1][w/2+1] = WOLF;
     animals.push_front(new wolf());
@@ -28,10 +32,10 @@ map::~map()
     //dtor
     for(int i=0; i<height; i++) delete(grid[i]);
     delete(grid);
-    while(!animals.empty())
+    while(!animals.size()>1)
     {
-        delete animals.front();
-        animals.pop_front();
+        delete animals.back();
+        animals.pop_back();
     }
 }
 
