@@ -9,12 +9,15 @@ HunterWolf::HunterWolf()
 	//ctor
 }
 
+/*
+    the act of the wolf is to move towards the closest rabbit
+*/
 direction HunterWolf::act()
 {
-	coordinate cor = get_location();
-	coordinate rcor = parent_map->get_nearest_rabbit(cor);
+	coordinate cor = get_location();                            //get current location of wolf
+	coordinate rcor = parent_map->get_nearest_rabbit(cor);      //get location of closest rabbit
 
-	if (rcor.x == cor.x && rcor.y == cor.y)
+	if (rcor.x == cor.x && rcor.y == cor.y)                     //according to x and y of the rabbit we will move the wolf, towards rabbit
 	{
 		return NOWHERE;
 	}

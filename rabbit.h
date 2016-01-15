@@ -4,7 +4,9 @@
 #include "animal.h"
 #include <list>
 
-
+/*
+    header file for rabbit
+*/
 class rabbit : public animal
 {
     public:

@@ -6,12 +6,15 @@ lion::lion()
     //ctor
 }
 
+/*
+    the act of the lion is to move towards the closest wolf
+*/
 direction lion::act()
 {
-    coordinate cor = get_location();
-	coordinate wcor = parent_map->get_nearest_wolf(cor);
+    coordinate cor = get_location();                            //get current location of lion
+	coordinate wcor = parent_map->get_nearest_wolf(cor);        //get location of closest wolf
 
-	if (wcor.x == cor.x && wcor.y == cor.y)
+	if (wcor.x == cor.x && wcor.y == cor.y)                     //according to x and y of the wolf we will move the lion, towards wolf
 	{
 		return NOWHERE;
 	}

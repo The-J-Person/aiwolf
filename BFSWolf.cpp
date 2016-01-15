@@ -14,20 +14,20 @@ BFSWolf::~BFSWolf()
 
 direction BFSWolf::act()
 {
-    map_object** mp = parent_map->get_grid();
-    coordinate start = get_location();
-    const int width = start.x * 2 - 1;
+    map_object** mp = parent_map->get_grid();           //get current map
+    coordinate start = get_location();                  //get coordinates of current wolf
+    const int width = start.x * 2 - 1;                  //get width/height of map
     const int height = start.y * 2 - 1;
     std::queue<coordinate> que;
 
-    bool** visited = new bool*[width];
+    bool** visited = new bool*[width];                  //2d array for visitation of cells set to not visited
     for (int i = 0; i < width; i++)
     {
         visited[i] = new bool[height];
         for (int j = 0; j < height; j++)
             visited[i][j] = false;
     }
-    que.push(start);
+    que.push(start);                                    //push first coordinate of current wolf
     visited[start.x][start.y] = true;
     while(!que.empty())
     {
@@ -35,7 +35,7 @@ direction BFSWolf::act()
         std::list<coordinate> cors = get_cords(visited,cor);
         for (list<coordinate>::const_iterator ci = cors.begin(); ci != cors.end(); ++ci)
         {
-            if (mp[ci->x][ci->y] == RABBIT)
+            if (mp[ci->x][ci->y] == RABBIT)             //check on which direction to go
             {
                 if (ci->x == start.x && ci->y == start.y)
                 {
@@ -58,12 +58,14 @@ direction BFSWolf::act()
                     return DOWN;
                 }
             }
-            visited[ci->x][ci->y] = true;
+            visited[ci->x][ci->y] = true;               //set visitation to visited
         }
     }
     return NOWHERE;
 }
-
+/*
+    determine what coordinated to add to bfs
+*/
 std::list<coordinate> BFSWolf::get_cords(bool** visited, coordinate cor)
 {
 
