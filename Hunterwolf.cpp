@@ -10,7 +10,7 @@ HunterWolf::HunterWolf()
 	dead = false;
 }
 
-int HunterWolf::act()
+direction HunterWolf::act()
 {
 	coordinate cor, mincor;
 	list<float> dists;
