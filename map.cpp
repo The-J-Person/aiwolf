@@ -101,13 +101,13 @@ void map::move_map(direction dir)
     switch(dir)
     {
     case ::UP:
-        y=1;
+        y=-1;
         break;
     case ::RIGHT:
         x=1;
         break;
     case ::DOWN:
-        y=-1;
+        y=1;
         break;
     case ::LEFT:
         x=-1;
@@ -167,6 +167,8 @@ long map::run(bool show)
     while(tick_count<max_ticks)
     {
         ///Move everyone
+        list<animal*>::iterator it;
+        it = animals.begin();
         ///Gotta put an iterator here
         generate_edges();
         tick_count++;

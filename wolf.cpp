@@ -5,9 +5,9 @@ wolf::wolf()
     //ctor
 }
 
-int wolf::act()
+direction wolf::act()
 {
-    return 0;
+    return NOWHERE;
 }
 wolf::~wolf()
 {

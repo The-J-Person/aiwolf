@@ -5,9 +5,9 @@ lion::lion()
     //ctor
 }
 
-int lion::act()
+direction lion::act()
 {
-    return 0;
+    return NOWHERE;
 }
 lion::~lion()
 {

@@ -6,31 +6,31 @@ animal::animal()
     //ctor
 }
 
-int animal::act()
+direction animal::act()
 {
-
+    return NOWHERE;
 }
 
-void animal::move_self(direction D)
-{
-    switch(D)
-    {
-    case UP:
-        loc.y++;
-        break;
-    case RIGHT:
-        loc.x++;
-        break;
-    case DOWN:
-        loc.y--;
-        break;
-    case LEFT:
-        loc.x--;
-        break;
-    case NOWHERE:
-        break;
-    }
-}
+//void animal::move_self(direction D)
+//{
+//    switch(D)
+//    {
+//    case UP:
+//        loc.y++;
+//        break;
+//    case RIGHT:
+//        loc.x++;
+//        break;
+//    case DOWN:
+//        loc.y--;
+//        break;
+//    case LEFT:
+//        loc.x--;
+//        break;
+//    case NOWHERE:
+//        break;
+//    }
+//}
 
 coordinate animal::get_location()
 {

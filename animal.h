@@ -9,8 +9,8 @@ class animal
     public:
         animal();
         virtual ~animal();
-        virtual int act();
-        void move_self(direction);
+        virtual direction act();
+        //void move_self(direction);
         void set_location(coordinate);
         coordinate get_location();
     protected:

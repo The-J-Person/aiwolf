@@ -6,9 +6,9 @@ StupidWolf::StupidWolf()
     dead = false;
 }
 
-int StupidWolf::act()
+direction StupidWolf::act()
 {
-    return 0;
+    return NOWHERE;
 }
 StupidWolf::~StupidWolf()
 {

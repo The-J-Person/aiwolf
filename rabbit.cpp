@@ -5,9 +5,9 @@ rabbit::rabbit()
     //ctor
 }
 
-int rabbit::act()
+direction rabbit::act()
 {
-    return 0;
+    return NOWHERE;
 }
 rabbit::~rabbit()
 {

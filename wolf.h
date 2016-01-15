@@ -9,7 +9,7 @@ class wolf : public animal
     public:
         wolf();
         virtual ~wolf();
-        virtual int act();
+        virtual direction act();
         void set_hunger_threshold(int);
         void grow_hungry();
     protected:
