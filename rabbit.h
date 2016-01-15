@@ -2,6 +2,7 @@
 #define RABBIT_H
 
 #include "animal.h"
+#include <list>
 
 
 class rabbit : public animal

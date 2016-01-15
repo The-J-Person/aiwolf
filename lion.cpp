@@ -1,4 +1,5 @@
 #include "lion.h"
+#include "map.h"
 
 lion::lion()
 {

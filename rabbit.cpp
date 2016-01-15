@@ -1,6 +1,5 @@
 #include "rabbit.h"
 #include "map.h"
-#include <list>
 
 rabbit::rabbit()
 {

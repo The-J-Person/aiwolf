@@ -38,7 +38,6 @@ map::~map()
         animals.pop_back();
     }
 }
-
 map::map(const map& other)
 {
     //"copy" ctor
@@ -101,19 +100,19 @@ void map::move_map(direction dir)
 {
     int x=0;
     int y=0;
-    switch(dir)
+    switch(dir) ///Reverse, because if the wolf moved right, the map moves left, etc
     {
     case ::UP:
-        y=-1;
-        break;
-    case ::RIGHT:
-        x=1;
-        break;
-    case ::DOWN:
         y=1;
         break;
-    case ::LEFT:
+    case ::RIGHT:
         x=-1;
+        break;
+    case ::DOWN:
+        y=-1;
+        break;
+    case ::LEFT:
+        x=1;
         break;
     case ::NOWHERE:
         break;
@@ -124,7 +123,14 @@ void map::move_map(direction dir)
         {
             if(i+y<height && i+y>=0)
                 if(j+x<width && j+x>=0)
+                {
+                    coordinate c = {i,j};
+                    animal* local = find_animal_by_location(c);
+                    c.x=i+y;
+                    c.y=j+x;
+                    if(local!=NULL) local -> set_location(c);
                     swap(grid[i][j],grid[i+y][j+x]);
+                }
         }
     }
 }
@@ -361,6 +367,7 @@ coordinate map::get_nearest_wolf(coordinate source)
             }
         }
     }
+    return mindistcoor;
 }
 
 coordinate map::get_nearest_lion(coordinate source)
@@ -382,6 +389,7 @@ coordinate map::get_nearest_lion(coordinate source)
             }
         }
     }
+    return mindistcoor;
 }
 
 coordinate map::get_nearest_rabbit(coordinate source)
@@ -403,6 +411,7 @@ coordinate map::get_nearest_rabbit(coordinate source)
             }
         }
     }
+    return mindistcoor;
 }
 
 map_object** map::get_grid()
