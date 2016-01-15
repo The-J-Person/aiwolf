@@ -1,51 +1,57 @@
 # depslib dependency file v1.0
-1452393461 source:/home/jenia/Documents/C++/AIWolf/animal.cpp
+1452861316 source:/home/jenia/Documents/C++/AIWolf/animal.cpp
 	"animal.h"
 	"map.h"
 
-1452393423 /home/jenia/Documents/C++/AIWolf/animal.h
+1452883283 /home/jenia/Documents/C++/AIWolf/animal.h
 	"misc.h"
 
-1451991292 source:/home/jenia/Documents/C++/AIWolf/lion.cpp
+1452886712 source:/home/jenia/Documents/C++/AIWolf/lion.cpp
 	"lion.h"
-
-1451991292 /home/jenia/Documents/C++/AIWolf/lion.h
-	"animal.h"
-
-1452391309 source:/home/jenia/Documents/C++/AIWolf/main.cpp
-	<iostream>
-	"StupidWolf.h"
 	"map.h"
 
-1452391169 source:/home/jenia/Documents/C++/AIWolf/map.cpp
+1452860693 /home/jenia/Documents/C++/AIWolf/lion.h
+	"animal.h"
+
+1452887577 source:/home/jenia/Documents/C++/AIWolf/main.cpp
+	<iostream>
+	"StupidWolf.h"
+	"Hunterwolf.h"
+	"BFSWolf.h"
+	"map.h"
+
+1452887345 source:/home/jenia/Documents/C++/AIWolf/map.cpp
 	"map.h"
 	"lion.h"
 	"rabbit.h"
 	"wolf.h"
 
-1452515164 /home/jenia/Documents/C++/AIWolf/map.h
+1452883928 /home/jenia/Documents/C++/AIWolf/map.h
 	<iostream>
 	<cstdlib>
 	<list>
 	<cmath>
+	<ctime>
 	"misc.h"
 
-1451991292 source:/home/jenia/Documents/C++/AIWolf/rabbit.cpp
+1452886779 source:/home/jenia/Documents/C++/AIWolf/rabbit.cpp
 	"rabbit.h"
+	"map.h"
 
-1451991292 /home/jenia/Documents/C++/AIWolf/rabbit.h
+1452886779 /home/jenia/Documents/C++/AIWolf/rabbit.h
 	"animal.h"
+	<list>
 
-1452390311 source:/home/jenia/Documents/C++/AIWolf/StupidWolf.cpp
+1452883592 source:/home/jenia/Documents/C++/AIWolf/StupidWolf.cpp
 	"StupidWolf.h"
 
-1452391761 /home/jenia/Documents/C++/AIWolf/StupidWolf.h
+1452861241 /home/jenia/Documents/C++/AIWolf/StupidWolf.h
 	"wolf.h"
 
-1452389869 /home/jenia/Documents/C++/AIWolf/wolf.h
+1452867995 /home/jenia/Documents/C++/AIWolf/wolf.h
 	"animal.h"
 
-1452390223 source:/home/jenia/Documents/C++/AIWolf/wolf.cpp
+1452880928 source:/home/jenia/Documents/C++/AIWolf/wolf.cpp
 	"wolf.h"
 
 1451991144 source:d:\airwolf\animal.cpp
@@ -86,4 +92,23 @@
 	"animal.h"
 
 1452391591 /home/jenia/Documents/C++/AIWolf/misc.h
+
+1452883289 source:/home/jenia/Documents/C++/AIWolf/BFSWolf.cpp
+	"BFSWolf.h"
+	"map.h"
+	<queue>
+
+1452871132 /home/jenia/Documents/C++/AIWolf/BFSWolf.h
+	"wolf.h"
+	<list>
+
+1452886954 source:/home/jenia/Documents/C++/AIWolf/Hunterwolf.cpp
+	"Hunterwolf.h"
+	"map.h"
+	<list>
+	<math.h>
+	<limits.h>
+
+1452871132 /home/jenia/Documents/C++/AIWolf/Hunterwolf.h
+	"wolf.h"
 
