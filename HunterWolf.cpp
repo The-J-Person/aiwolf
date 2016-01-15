@@ -22,7 +22,7 @@ direction HunterWolf::act()
 	{
 		return LEFT;
 	}
-	else if (rcor.x < cor.x)
+	else if (rcor.x > cor.x)
 	{
 		return RIGHT;
 	}

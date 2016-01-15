@@ -19,7 +19,7 @@ direction rabbit::act()
 	{
 		return RIGHT;
 	}
-	else if (wcor.x < cor.x)
+	else if (wcor.x > cor.x)
 	{
 		return LEFT;
 	}

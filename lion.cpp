@@ -19,7 +19,7 @@ direction lion::act()
 	{
 		return LEFT;
 	}
-	else if (wcor.x < cor.x)
+	else if (wcor.x > cor.x)
 	{
 		return RIGHT;
 	}
