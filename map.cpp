@@ -34,7 +34,23 @@ map::~map()
 
 map::map(const map& other)
 {
-    //copy ctor
+    //"copy" ctor
+    tick_count=0;
+    lion_chance=other.lion_chance;
+    rabbit_chance=other.rabbit_chance;
+    tree_chance=other.tree_chance;
+    height=other.height;
+    width=other.width;
+    max_ticks=other.max_ticks;
+    grid = new map_object*[height];
+    for(int i=0;i<height;i++)
+    {
+        grid[i] = new map_object[width];
+        for(int j=0;j<width;j++) if(i!=height/2+1 && j!=width/2+1)generate_terrain(i,j);
+    }
+    grid[height/2+1][width/2+1] = WOLF;
+    wolf * def = new wolf();
+    animals.push_front(def);
 }
 
 map& map::operator=(const map& rhs)
@@ -150,11 +166,11 @@ long map::run(bool show)
     return tick_count;
 }
 
-coordinate* map::get_all_lions()
+list<coordinate> map::get_all_lions()
 {
 
 }
-coordinate* map::get_all_rabbits()
+list<coordinate> map::get_all_rabbits()
 {
 
 }
@@ -176,7 +192,7 @@ coordinate map::get_nearest_rabbit(coordinate source)
 
 map_object** map::get_grid()
 {
-
+    return grid;
 }
 
 
