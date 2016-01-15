@@ -11,6 +11,11 @@ direction animal::act()
     return NOWHERE;
 }
 
+void animal::set_parent(map* parent)
+{
+    parent_map=parent;
+}
+
 //void animal::move_self(direction D)
 //{
 //    switch(D)

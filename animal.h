@@ -12,6 +12,7 @@ class animal
         virtual direction act();
         //void move_self(direction);
         void set_location(coordinate);
+        void set_parent(map*);
         coordinate get_location();
     protected:
         map* parent_map;

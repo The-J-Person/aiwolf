@@ -69,7 +69,6 @@ map& map::operator=(const map& rhs)
 
 void map::generate_terrain(int x,int y)
 {
-    srand (time(NULL));
     int roll = rand() % 100;
     if(roll<lion_chance)
     {
@@ -77,6 +76,7 @@ void map::generate_terrain(int x,int y)
         lion * L = new lion;
         coordinate c = {x,y};
         L -> set_location(c);
+        L -> set_parent(this);
         animals.push_back(L);
     }
     else if(roll<lion_chance+rabbit_chance)
@@ -85,6 +85,7 @@ void map::generate_terrain(int x,int y)
         rabbit * R = new rabbit;
         coordinate c = {x,y};
         R -> set_location(c);
+        R -> set_parent(this);
         animals.push_back(R);
     }
     else if(roll<lion_chance+rabbit_chance+tree_chance)
@@ -172,6 +173,7 @@ void map::placewolf(wolf* protag)
     animals.pop_front();
     coordinate c = {height/2+1,width/2+1};
     protag -> set_location(c);
+    protag -> set_parent(this);
     animals.push_front(protag);
 }
 

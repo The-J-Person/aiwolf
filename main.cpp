@@ -71,6 +71,7 @@ wolf* getwolf()
 
 int main()
 {
+    srand (time(NULL));
     cout << "Welcome to the Wolf AI tester!" << endl;
     char choice='0';
     map * simarea;
@@ -80,22 +81,22 @@ int main()
     ///
     /// TEST ZONE
     ///
-    simarea = new map(40,24, 2, 5, 10, 500);
-    protag = new StupidWolf();
-    protag -> set_hunger_threshold(100);
-    simarea -> placewolf(protag);
-    long counter;
-    for(int i=0; i<200; i++)
-    {
-        counter=simarea->run(false);
-        cout << "Completed run " << i+1 << " with running total of " << counter << endl;
-        protag -> eat();
-        map * temp = new map(*simarea);
-        delete simarea;
-        simarea = temp;
-        simarea -> placewolf(protag);
-    }
-    return 0;
+//    simarea = new map(40,24, 2, 5, 10, 500);
+//    protag = new StupidWolf();
+//    protag -> set_hunger_threshold(100);
+//    simarea -> placewolf(protag);
+//    long counter=0;
+//    for(int i=0; i<200; i++)
+//    {
+//        counter=simarea->run(false);
+//        cout << "Completed run " << i+1 << " with running total of " << counter << endl;
+//        protag -> eat();
+//        map * temp = new map(*simarea);
+//        delete simarea;
+//        simarea = temp;
+//        simarea -> placewolf(protag);
+//    }
+//    return 0;
     ///
     /// TEST ZONE
     ///
@@ -125,7 +126,7 @@ int main()
 
             cout << "How many times should this run?" << endl;
             int times;
-            double avg;
+            double avg=0;
             cin >> times;
             for(int i=0; i<times; i++)
             {
