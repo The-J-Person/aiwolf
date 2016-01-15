@@ -97,6 +97,6 @@ int main()
     }
     while(choice!='e');
     delete simarea;
-    delete protag;
+//    delete protag; //Map deletes it on it's own
     return 0;
 }

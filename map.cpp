@@ -193,90 +193,95 @@ long map::run(bool show)
                 mody=-1;
                 break;
             case NOWHERE:
-                continue;
+                break;
             }
             if(modx!=0 || mody!=0)switch(grid[x][y])
-            {
-            case WOLF:
-                switch(grid[x+modx][y+mody])
                 {
                 case WOLF:
-                    cout << "The developer did not account for 2 wolves on the same map!" << endl;
+                    switch(grid[x+modx][y+mody])
+                    {
+                    case WOLF:
+                        cout << "The developer did not account for 2 wolves on the same map!" << endl;
+                        break;
+                    case RABBIT:
+                        c.x=x+modx;
+                        c.y=y+mody;
+                        (*it) -> set_location(c);
+                        move_map(d);
+                        p -> eat();
+                        break;
+                    case LION:
+                        ///The Wolf gets himself killed
+                        return tick_count;
+                    case TREE:
+                        break;
+                    case BLANK:
+                        c.x=x+modx;
+                        c.y=y+mody;
+                        (*it) -> set_location(c);
+                        move_map(d);
+                        break;
+                    }
+                    if(show)
+                    {
+                        draw_map();
+                        cin.ignore();
+                    }
                     break;
-                case RABBIT:
-                    c.x=x+modx;
-                    c.y=y+mody;
-                    (*it) -> set_location(c);
-                    move_map(d);
-                    p -> eat();
-                    break;
-                case LION:
-                    ///The Wolf gets himself killed
-                    return tick_count;
-                case TREE:
-                    break;
-                case BLANK:
-                    c.x=x+modx;
-                    c.y=y+mody;
-                    (*it) -> set_location(c);
-                    move_map(d);
-                    break;
-                }
-                if(show)
-                {
-                    draw_map();
-                    cin.ignore();
-                }
-                break;
 
                 case LION:
-                switch(grid[x+modx][y+mody])
-                {
-                case WOLF:
-                    ///The wolf has been eaten
-                    return tick_count;
-                    break;
-                case RABBIT:
-                    ///Don't move, you might step on the rabbit!
-                    break;
-                case LION:
-                    ///Don't move, you'll make the other lion angry
-                    break;
-                case TREE:
-                    ///The lion hits a tree! Ow!
-                    break;
-                case BLANK:
-                    c.x=x+modx;
-                    c.y=y+mody;
-                    (*it) -> set_location(c);
-                    break;
-                }
+                    switch(grid[x+modx][y+mody])
+                    {
+                    case WOLF:
+                        ///The wolf has been eaten
+                        return tick_count;
+                        break;
+                    case RABBIT:
+                        ///Don't move, you might step on the rabbit!
+                        break;
+                    case LION:
+                        ///Don't move, you'll make the other lion angry
+                        break;
+                    case TREE:
+                        ///The lion hits a tree! Ow!
+                        break;
+                    case BLANK:
+                        c.x=x+modx;
+                        c.y=y+mody;
+                        (*it) -> set_location(c);
+                        break;
+                    }
 
                 case RABBIT:
-                switch(grid[x+modx][y+mody])
-                {
-                case WOLF:
-                    ///The rabbit sacrificed himself. Should not happen.
-                    p -> eat();
-                    return tick_count;
-                    break;
-                case RABBIT:
-                    ///Don't move, the other rabbit is in the way
-                    break;
-                case LION:
-                    ///Don't move, you'll make the lion angry!
-                    break;
-                case TREE:
-                    ///The rabbit hits a tree! Ow!
-                    break;
-                case BLANK:
-                    c.x=x+modx;
-                    c.y=y+mody;
-                    (*it) -> set_location(c);
-                    break;
-                }
+                    switch(grid[x+modx][y+mody])
+                    {
+                    case WOLF:
+                        ///The rabbit sacrificed himself. Should not happen.
+                        p -> eat();
+                        return tick_count;
+                        break;
+                    case RABBIT:
+                        ///Don't move, the other rabbit is in the way
+                        break;
+                    case LION:
+                        ///Don't move, you'll make the lion angry!
+                        break;
+                    case TREE:
+                        ///The rabbit hits a tree! Ow!
+                        break;
+                    case BLANK:
+                        c.x=x+modx;
+                        c.y=y+mody;
+                        (*it) -> set_location(c);
+                        break;
+                    }
                 default:
                     break;
+                }
+            else if(show && (*it)==p)
+            {
+                draw_map();
+                cin.ignore();
             }
         }
         ///Gotta put an iterator here
