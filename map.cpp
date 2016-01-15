@@ -32,8 +32,9 @@ map::~map()
     //dtor
     for(int i=0; i<height; i++) delete grid[i];
     delete[] grid;
-    while(!animals.size()>1)
+    while(animals.size()>1)
     {
+        ///Once size()==1, only the wolf is left, and it is not deleted
         delete animals.back();
         animals.pop_back();
     }
