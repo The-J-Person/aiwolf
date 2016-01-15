@@ -169,13 +169,14 @@ void map::placewolf(wolf* protag)
 {
     delete animals.front();
     animals.pop_front();
+    coordinate c = {height/2+1,width/2+1};
+    protag -> set_location(c);
     animals.push_front(protag);
 }
 
 long map::run(bool show)
 {
     wolf * p = (wolf*)(animals.front());
-    bool deleted=false;
     while(tick_count<max_ticks && !(p->starve()))
     {
         ///Move everyone
@@ -183,11 +184,6 @@ long map::run(bool show)
         coordinate c;
         for (it=animals.begin(); it!=animals.end() ; ++it)
         {
-            if(deleted)
-            {
-                --it;
-                deleted = false;
-            }
             direction d = (*it) -> act();
             c = (*it) -> get_location();
             int x = c.x;
