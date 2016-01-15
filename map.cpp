@@ -321,26 +321,88 @@ long map::run(bool show)
 
 list<coordinate> map::get_all_lions()
 {
-
+    list<animal*>::iterator it;
+    list<coordinate> lions;
+    for (it=animals.begin(); it!=animals.end() ; ++it)
+    {
+        coordinate loc = (*it)->get_location();
+        if(grid[loc.x][loc.y]==LION) lions.push_front((*it)->get_location());
+    }
+    return lions;
 }
 list<coordinate> map::get_all_rabbits()
 {
-
+    list<animal*>::iterator it;
+    list<coordinate> rabbits;
+    for (it=animals.begin(); it!=animals.end() ; ++it)
+    {
+        coordinate loc = (*it)->get_location();
+        if(grid[loc.x][loc.y]==RABBIT) rabbits.push_front((*it)->get_location());
+    }
+    return rabbits;
 }
 
 coordinate map::get_nearest_wolf(coordinate source)
 {
-
+    list<animal*>::iterator it;
+    int dist=0;
+    int mindist=width+height;
+    coordinate mindistcoor=source;
+    for (it=animals.begin(); it!=animals.end() ; ++it)
+    {
+        coordinate loc = (*it)->get_location();
+        if(grid[loc.x][loc.y]==WOLF)
+        {
+            dist=measure_distance(source,loc);
+            if(dist<mindist&&dist!=0)
+            {
+                mindistcoor=loc;
+                mindist=dist;
+            }
+        }
+    }
 }
 
 coordinate map::get_nearest_lion(coordinate source)
 {
-
+    list<animal*>::iterator it;
+    int dist=0;
+    int mindist=width+height;
+    coordinate mindistcoor=source;
+    for (it=animals.begin(); it!=animals.end() ; ++it)
+    {
+        coordinate loc = (*it)->get_location();
+        if(grid[loc.x][loc.y]==RABBIT)
+        {
+            dist=measure_distance(source,loc);
+            if(dist<mindist&&dist!=0)
+            {
+                mindistcoor=loc;
+                mindist=dist;
+            }
+        }
+    }
 }
 
 coordinate map::get_nearest_rabbit(coordinate source)
 {
-
+    list<animal*>::iterator it;
+    int dist=0;
+    int mindist=width+height;
+    coordinate mindistcoor=source;
+    for (it=animals.begin(); it!=animals.end() ; ++it)
+    {
+        coordinate loc = (*it)->get_location();
+        if(grid[loc.x][loc.y]==RABBIT)
+        {
+            dist=measure_distance(source,loc);
+            if(dist<mindist&&dist!=0)
+            {
+                mindistcoor=loc;
+                mindist=dist;
+            }
+        }
+    }
 }
 
 map_object** map::get_grid()
@@ -349,10 +411,8 @@ map_object** map::get_grid()
 }
 
 
-int map::measure_distance(animal* first,animal* second)
+int map::measure_distance(coordinate source,coordinate target)
 {
-    coordinate source=first ->get_location();
-    coordinate target=second ->get_location();
     int distx = pow(source.x-target.x,2);
     int disty = pow(source.y-target.y,2);
     int result = sqrt(distx+disty);

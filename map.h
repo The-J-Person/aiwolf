@@ -47,7 +47,7 @@ class map
         void move_map(direction);
         void generate_edges();
         void generate_terrain(int,int);
-        int measure_distance(animal*,animal*);
+        int measure_distance(coordinate,coordinate);
         animal * find_animal_by_location(coordinate);
 };
 
