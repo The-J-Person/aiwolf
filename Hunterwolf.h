@@ -9,7 +9,7 @@ class HunterWolf : public wolf
 public:
 	HunterWolf();
 	virtual ~HunterWolf();
-	int act();
+	direction act();
 protected:
 
 private:
