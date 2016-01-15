@@ -1,5 +1,7 @@
 #include <iostream>
 #include "StupidWolf.h"
+#include "Hunterwolf.h"
+#include "BFSWolf.h"
 #include "map.h"
 
 using namespace std;
@@ -34,7 +36,10 @@ wolf* getwolf()
     ///
     /// ADD NEW WOLF AI CHOICES HERE PLEASE
     ///
-    cout << "1. Stupid Wolf";
+    cout << "1. Stupid Wolf" << endl;
+    cout << "2. Hunter Wolf" << endl;
+    cout << "3. BFS Wolf" << endl;
+
     while(newwolf==NULL)
     {
         cin >> wchoice;
@@ -42,6 +47,12 @@ wolf* getwolf()
         {
         case 1:
             newwolf = new StupidWolf();
+            break;
+        case 2:
+            newwolf = new HunterWolf();
+            break;
+        case 3:
+            newwolf = new BFSwolf();
             break;
         default:
             cout << "Invalid choice..." << endl;

@@ -3,6 +3,7 @@
 wolf::wolf()
 {
     //ctor
+    hunger=0;
 }
 
 direction wolf::act()
